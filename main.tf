@@ -40,6 +40,7 @@ module "aft_account_request_framework" {
   aft_vpc_private_subnet_02_cidr              = var.aft_vpc_private_subnet_02_cidr
   aft_vpc_public_subnet_01_cidr               = var.aft_vpc_public_subnet_01_cidr
   aft_vpc_public_subnet_02_cidr               = var.aft_vpc_public_subnet_02_cidr
+  aft_vpc_nat_gateway                         = var.aft_vpc_nat_gateway
   aft_vpc_endpoints                           = var.aft_vpc_endpoints
   request_framework_archive_path              = module.packaging.request_framework_archive_path
   request_framework_archive_hash              = module.packaging.request_framework_archive_hash
