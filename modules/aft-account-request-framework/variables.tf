@@ -52,3 +52,7 @@ variable "request_framework_archive_path" {
 variable "request_framework_archive_hash" {
   type = string
 }
+
+variable "aft_schedule_account_creation_request" {
+  type = bool
+}

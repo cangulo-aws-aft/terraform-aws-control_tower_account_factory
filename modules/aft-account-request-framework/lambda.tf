@@ -141,11 +141,14 @@ resource "aws_lambda_function" "aft_account_request_processor" {
 }
 
 resource "aws_lambda_permission" "aft_account_request_processor" {
+
+  count = var.aft_schedule_account_creation_request ? 1 : 0
+
   statement_id  = "AllowExecutionFromCloudWatch"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.aft_account_request_processor.function_name
   principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.aft_account_request_processor.arn
+  source_arn    = aws_cloudwatch_event_rule.aft_account_request_processor[0].arn
 }
 
 resource "aws_cloudwatch_log_group" "aft_account_request_processor" {

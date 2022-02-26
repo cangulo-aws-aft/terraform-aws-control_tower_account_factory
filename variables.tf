@@ -120,6 +120,16 @@ variable "global_codebuild_timeout" {
   }
 }
 
+variable "aft_schedule_account_creation_request" {
+  type        = bool
+  description = "Flag (true or false) for process account creation request every 5 min. Create a cloudwatch event rule."
+  default     = true
+  validation {
+    condition     = contains([true, false], var.aft_schedule_account_creation_request)
+    error_message = "Valid values for var: aft_schedule_account_creation_request are (true, false)."
+  }
+}
+
 #########################################
 # AFT Feature Flags
 #########################################
