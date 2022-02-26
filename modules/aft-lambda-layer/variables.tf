@@ -59,3 +59,7 @@ variable "builder_archive_path" {
 variable "builder_archive_hash" {
   type = string
 }
+
+variable "aft_invoke_codebuild" {
+  type = bool
+}

@@ -19,6 +19,9 @@ resource "aws_lambda_function" "codebuild_invoker" {
 }
 
 data "aws_lambda_invocation" "invoke_codebuild_job" {
+
+  count = var.aft_invoke_codebuild ? 1 : 0
+
   function_name = aws_lambda_function.codebuild_invoker.function_name
 
   input = <<JSON
@@ -29,5 +32,5 @@ JSON
 }
 
 output "lambda_layer_build_status" {
-  value = jsondecode(data.aws_lambda_invocation.invoke_codebuild_job.result)["Status"]
+  value = var.aft_invoke_codebuild == true ? jsondecode(data.aws_lambda_invocation.invoke_codebuild_job[0].result)["Status"] : "not triggered"
 }

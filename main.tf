@@ -176,6 +176,7 @@ module "aft_lambda_layer" {
   s3_bucket_name                                    = module.aft_customizations.aft_codepipeline_customizations_bucket_name
   builder_archive_path                              = module.packaging.builder_archive_path
   builder_archive_hash                              = module.packaging.builder_archive_hash
+  aft_invoke_codebuild                              = var.aft_invoke_codebuild
 }
 
 module "aft_ssm_parameters" {

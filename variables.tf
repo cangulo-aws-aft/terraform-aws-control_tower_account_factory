@@ -130,6 +130,16 @@ variable "aft_schedule_account_creation_request" {
   }
 }
 
+variable "aft_invoke_codebuild" {
+  type        = bool
+  description = "Flag (true or false) for invoking the lambda aft-lambda-layer-codebuild-invoker. Set it to false to reduce cost when you finish processing accont creation requests."
+  default     = true
+  validation {
+    condition     = contains([true, false], var.aft_invoke_codebuild)
+    error_message = "Valid values for var: aft_invoke_codebuild are (true, false)."
+  }
+}
+
 #########################################
 # AFT Feature Flags
 #########################################
